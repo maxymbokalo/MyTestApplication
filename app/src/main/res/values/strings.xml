@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">MyTestApplication</string>
+    <string name="custom_list">List</string>
+    <string name="images_from_sd">Images</string>
+    <string name="geolocation_textview">Geolocation</string>
+    <string name="registration_form">Registration</string>
+    <string name="other">Other</string>
+    <string name="settings">Settings</string>
+    <string name="exit">Exit</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
 </resources>
