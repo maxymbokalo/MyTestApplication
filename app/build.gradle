@@ -28,4 +28,8 @@ dependencies {
     }
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.android.support:support-v4:24.2.0'
+    compile 'com.github.clans:fab:1.6.4'
+    compile 'gun0912.ted:tedbottompicker:1.0.3'
+    compile 'gun0912.ted:tedpermission:1.0.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }

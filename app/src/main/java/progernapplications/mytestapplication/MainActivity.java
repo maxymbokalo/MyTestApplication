@@ -1,6 +1,7 @@
 package progernapplications.mytestapplication;
 
 import android.app.Activity;
+import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -10,6 +11,8 @@ import android.view.View;
 import android.view.inputmethod.InputMethodManager;
 import android.widget.Toast;
 
+import com.gun0912.tedpermission.PermissionListener;
+import com.gun0912.tedpermission.TedPermission;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -20,6 +23,11 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
+
+import java.util.ArrayList;
+import java.util.jar.Manifest;
+
+import gun0912.tedbottompicker.TedBottomPicker;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -34,9 +42,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mActionToolBar = (Toolbar) findViewById(R.id.toolbar);
         mActionToolBar.setTitle("");
-
         setSupportActionBar(mActionToolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         mAccountHeader = new AccountHeaderBuilder()
                 .withActivity(this)
@@ -78,11 +87,11 @@ public class MainActivity extends AppCompatActivity {
 
                                 case 1:
                                     getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new RecViewFragment()).commit();
-
+                                    mResultDrawer.closeDrawer();
                                     break;
                                 case 2:
-                                    // TODO Camera Activity
-                                    Toast.makeText(getApplicationContext(), "Camera Activity", Toast.LENGTH_SHORT).show();
+
+                                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new CameraFragment()).commit();
                                     mResultDrawer.closeDrawer();
                                     break;
                                 case 3:
