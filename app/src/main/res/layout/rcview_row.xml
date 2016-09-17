@@ -1,34 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical" android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:orientation="vertical" android:layout_width="wrap_content"
+    android:layout_height="wrap_content">
 
     <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
 
         <ImageView
             android:layout_width="75dp"
             android:layout_height="75dp"
-            android:id="@+id/imageView" />
+            android:id="@+id/albumCover" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="45dp"
-            android:text="Primary text"
-            android:id="@+id/textView"
+            android:text="Singer Name"
+            android:id="@+id/singerName"
             android:layout_alignParentTop="true"
-            android:layout_toEndOf="@+id/imageView"
+            android:layout_toEndOf="@+id/albumCover"
             android:textColor="@color/abc_input_method_navigation_guard"
-            android:textSize="25sp" />
+            android:textSize="25sp"
+            android:layout_marginLeft="20dp" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="30dp"
-            android:text="Secondary Text"
-            android:id="@+id/textView2"
-            android:layout_below="@+id/textView"
-            android:layout_toEndOf="@+id/imageView"
-            android:textColor="@color/secondaryTextColor" />
+            android:text="Album name"
+            android:id="@+id/albumName"
+            android:layout_below="@+id/singerName"
+            android:layout_toEndOf="@+id/albumCover"
+            android:textColor="@color/secondaryTextColor"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="15dp" />
     </RelativeLayout>
 </LinearLayout>

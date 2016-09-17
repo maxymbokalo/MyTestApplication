@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import com.github.clans.fab.FloatingActionButton;
@@ -27,7 +28,9 @@ public class CameraFragment extends Fragment implements View.OnClickListener{
 
 
     FloatingActionButton mFloatingActionButton;
-    ImageView imageFromGallery;
+    ImageView placeholder;
+
+
 
     @Nullable
     @Override
@@ -64,7 +67,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener{
     public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mFloatingActionButton = (FloatingActionButton)view.findViewById(R.id.floatActionButton);
-        imageFromGallery = (ImageView)view.findViewById(R.id.imageFromGallery);
+        placeholder = (ImageView)view.findViewById(R.id.imagePlaceholder);
         mFloatingActionButton.setOnClickListener(this);
 
     }
@@ -80,7 +83,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener{
                         public void onImageSelected(Uri uri) {
                             Picasso.with(getActivity().getApplicationContext())
                                     .load(uri)
-                                    .into(imageFromGallery);
+                                    .into(placeholder);
                         }
                     })
                     .create();
@@ -89,4 +92,6 @@ public class CameraFragment extends Fragment implements View.OnClickListener{
             tedBottomPicker.show(getActivity().getSupportFragmentManager());
         }
     }
+
+
 }

@@ -54,7 +54,7 @@ public class MainActivity extends AppCompatActivity {
                         new ProfileDrawerItem()
                                 .withName("Misko Oleg")
                                 .withEmail("olegmiskoo@gmail.com")
-                                .withIcon(getResources().getDrawable(R.drawable.profphoto))
+                                .withIcon(R.drawable.profphoto)
                 )
                 .withOnAccountHeaderListener(new AccountHeader.OnAccountHeaderListener() {
                     @Override
