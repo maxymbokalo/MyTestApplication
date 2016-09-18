@@ -43,8 +43,7 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.mViewHolde
     @Override
     public void onBindViewHolder(mViewHolder holder, int position)
     {
-        try {
-            Album currentAlbum = albumList.get(position);
+        Album currentAlbum = albumList.get(position);
             holder.albumName.setText(currentAlbum.mName);
             holder.singerName.setText(currentAlbum.mSinger);
             Picasso.with(context)
@@ -53,10 +52,6 @@ public class CustomAdapter extends RecyclerView.Adapter<CustomAdapter.mViewHolde
                     .error(R.drawable.errorplaceholder)
                     .into(holder.albumCover);
 
-        }catch (Exception ex)
-        {
-            // TODO
-        }
     }
 
     @Override

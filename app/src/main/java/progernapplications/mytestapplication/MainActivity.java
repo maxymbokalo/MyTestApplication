@@ -95,8 +95,7 @@ public class MainActivity extends AppCompatActivity {
                                     mResultDrawer.closeDrawer();
                                     break;
                                 case 3:
-                                    // TODO Geolocation Activity
-                                    Toast.makeText(getApplicationContext(), "Geolocation Activity", Toast.LENGTH_SHORT).show();
+                                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new GeolocationFragment()).commit();
                                     mResultDrawer.closeDrawer();
                                     break;
                                 case 4:

@@ -5,24 +5,32 @@
     xmlns:fab="http://schemas.android.com/apk/res-auto"
     tools:context="progernapplications.mytestapplication.CameraFragment">
 
-    <com.github.clans.fab.FloatingActionButton
-        android:id="@+id/floatActionButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom|right"
-        android:layout_marginBottom="8dp"
-        android:layout_marginRight="8dp"
-        android:src="@drawable/camera_icon_fab"
-        fab:fab_colorNormal="@color/primary"
-        fab:fab_colorPressed="@color/primary_light"
-        fab:fab_colorRipple="@color/primary_dark"
-        android:longClickable="false" />
+    <LinearLayout android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
 
-    <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/imagePlaceholder"
-        android:layout_gravity="center"
-        android:layout_margin="20dp" />
+        <android.support.v7.widget.RecyclerView
+            android:layout_width="match_parent"
+            android:layout_height="0dip"
+            android:id="@+id/customGalleryRecyclerView"
+            android:layout_weight="1">
+        </android.support.v7.widget.RecyclerView>
+
+        <com.github.clans.fab.FloatingActionButton
+            android:id="@+id/floatActionButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:src="@drawable/camera_icon_fab"
+            fab:fab_colorNormal="@color/primary"
+            fab:fab_colorPressed="@color/primary_light"
+            fab:fab_colorRipple="@color/primary_dark"
+            android:longClickable="false"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentEnd="true"
+            android:layout_gravity="right" />
+
+
+    </LinearLayout>
 
 </FrameLayout>
