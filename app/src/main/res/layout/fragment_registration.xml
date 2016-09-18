@@ -1,0 +1,96 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="progernapplications.mytestapplication.RegistrationFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/loginField"
+            android:textSize="15sp"
+            android:hint="Login"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/passwordField"
+            android:textSize="15sp"
+            android:hint="Password"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginRight="30dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/firstNameField"
+            android:layout_below="@+id/loginField"
+            android:layout_alignParentStart="true"
+            android:layout_marginTop="30dp"
+            android:layout_marginLeft="30dp"
+            android:textSize="15sp"
+            android:hint="First name"/>
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/secondNameField"
+            android:layout_alignTop="@+id/firstNameField"
+            android:layout_alignStart="@+id/passwordField"
+            android:textSize="15sp"
+            android:hint="Second name"
+            android:layout_marginRight="30dp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/emailField"
+            android:layout_below="@+id/secondNameField"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="40dp"
+            android:hint="Email"
+            android:textSize="15sp" />
+
+        <EditText
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:inputType="date"
+            android:ems="10"
+            android:id="@+id/dateOfBirthField"
+            android:layout_centerVertical="true"
+            android:layout_centerHorizontal="true"
+            android:textSize="15sp"
+            android:hint="Date of birth"
+            android:textAlignment="center"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Send data to DB"
+            android:id="@+id/sendData"
+            android:layout_alignParentBottom="true"
+            android:layout_alignStart="@+id/firstNameField"
+            android:layout_marginBottom="104dp" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get data from DB"
+            android:id="@+id/getData"
+            android:layout_alignBottom="@+id/sendData"
+            android:layout_toEndOf="@+id/emailField" />
+
+    </RelativeLayout>
+</FrameLayout>

@@ -18,6 +18,9 @@ import android.widget.TextView;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,38 +32,31 @@ import io.nlopez.smartlocation.SmartLocation;
 public class GeolocationFragment extends Fragment {
 
     private LocationManager mLocationManager;
-    private Context context;
     private TextView locationText;
-    private Location currentLocation;
+    Location currentLocation;
 
-
-
-    @Nullable
-    @Override
-    public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-
-        return inflater.inflate(R.layout.fragment_geolocation, container, false);
-    }
+    String locText = "1234";
 
     @Override
-    public void onViewCreated(View view, @Nullable Bundle savedInstanceState) {
-        context = getActivity().getApplicationContext();
-        mLocationManager = (LocationManager) context.getSystemService(Context.LOCATION_SERVICE);
+    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+
+        final View view = inflater.inflate(R.layout.fragment_geolocation, container, false);
+
+        mLocationManager = (LocationManager) getContext().getSystemService(Context.LOCATION_SERVICE);
         locationText = (TextView) view.findViewById(R.id.locationTextView);
         boolean gps_enabled = false;
         boolean network_location_enabled = false;
-        final View myView = view;
 
         PermissionListener mPermissionListener = new PermissionListener() {
             @Override
             public void onPermissionGranted() {
-                Snackbar positiveSnackBar = Snackbar.make(myView, "Permission granted", Snackbar.LENGTH_SHORT);
+                Snackbar positiveSnackBar = Snackbar.make(view, "Permission granted", Snackbar.LENGTH_SHORT);
                 positiveSnackBar.show();
             }
 
             @Override
             public void onPermissionDenied(ArrayList<String> deniedPermissions) {
-                Snackbar negativeSnackBar = Snackbar.make(myView, "No permission to read files from storage", Snackbar.LENGTH_LONG);
+                Snackbar negativeSnackBar = Snackbar.make(view, "No permission to read files from storage", Snackbar.LENGTH_LONG);
                 negativeSnackBar.show();
             }
         };
@@ -79,25 +75,36 @@ public class GeolocationFragment extends Fragment {
         if (!gps_enabled && !network_location_enabled) {
             Snackbar negativeSnackBar = Snackbar.make(view, "No GPS or Network connection established", Snackbar.LENGTH_LONG);
             negativeSnackBar.show();
-
-
         } else {
             Snackbar positiveSnackBar = Snackbar.make(view, "GPS & Network connection established", Snackbar.LENGTH_LONG);
             positiveSnackBar.show();
 
-            SmartLocation.with(context).location()
+            SmartLocation.with(getContext()).location()
                     .oneFix()
                     .start(new OnLocationUpdatedListener() {
                         @Override
                         public void onLocationUpdated(Location location) {
-                            locationText.setText(location.getLatitude() + " , " + location.getLongitude());
+
+                            SmartLocation.with(getContext()).geocoding()
+                                    .reverse(location, new OnReverseGeocodingListener() {
+                                        @Override
+                                        public void onAddressResolved(Location location, List<Address> list) {
+                                            Address currentAddress = list.get(0);
+                                            locationText.setText(currentAddress.getCountryName() + " , " + currentAddress.getLocality()
+                                            +" , " + currentAddress.getThoroughfare() + " " + currentAddress.getFeatureName());
+                                        }
+
+                                    });
                         }
                     });
 
-
         }
 
+        return view;
     }
+
+
+
 }
 
 

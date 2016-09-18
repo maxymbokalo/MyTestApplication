@@ -22,6 +22,7 @@ import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
 import com.squareup.picasso.Picasso;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 import gun0912.tedbottompicker.TedBottomPicker;
@@ -112,5 +113,26 @@ public class CameraFragment extends Fragment implements View.OnClickListener{
         }
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("data", imageURIs);
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if(savedInstanceState != null)
+        {
+            imageURIs = (ArrayList<Uri>)savedInstanceState.getSerializable("data");
+            mLinearLayoutManager = new LinearLayoutManager(getActivity().getApplicationContext());
+            mCustomGalleryAdapter = new CustomGalleryAdapter(getActivity().getApplicationContext(), imageURIs);
+            mRecyclerView.setAdapter(mCustomGalleryAdapter);
+            mRecyclerView.addItemDecoration(new SimpleDividerItemDecoration(getActivity().getApplicationContext()));
+            mRecyclerView.setLayoutManager(mLinearLayoutManager);
+
+        }
+
+    }
 }

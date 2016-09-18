@@ -26,6 +26,7 @@ dependencies {
     compile('com.mikepenz:materialdrawer:5.6.0@aar') {
         transitive = true
     }
+
     compile 'com.android.support:appcompat-v7:24.2.0'
     compile 'com.android.support:support-v4:24.2.0'
     compile 'com.github.clans:fab:1.6.4'
@@ -33,7 +34,7 @@ dependencies {
     compile 'gun0912.ted:tedpermission:1.0.0'
     compile 'com.squareup.picasso:picasso:2.5.2'
     compile 'io.nlopez.smartlocation:library:3.2.7'
-
 }
+
 
 

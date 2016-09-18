@@ -99,8 +99,7 @@ public class MainActivity extends AppCompatActivity {
                                     mResultDrawer.closeDrawer();
                                     break;
                                 case 4:
-                                    // TODO registration form
-                                    Toast.makeText(getApplicationContext(), "Registration Activity", Toast.LENGTH_SHORT).show();
+                                    getSupportFragmentManager().beginTransaction().replace(R.id.frame_container, new RegistrationFragment()).commit();
                                     mResultDrawer.closeDrawer();
                                     break;
                                 case 5:
