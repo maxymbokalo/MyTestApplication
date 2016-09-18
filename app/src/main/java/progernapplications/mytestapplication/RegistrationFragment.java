@@ -70,4 +70,22 @@ public class RegistrationFragment extends Fragment implements View.OnClickListen
             }
         }
     }
+
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("data", usersList);
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+        if (savedInstanceState != null)
+        {
+            // TODO User class
+
+        }
+    }
 }
+
