@@ -1,18 +1,10 @@
 package progernapplications.mytestapplication;
 
-import android.app.Activity;
-import android.net.Uri;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.View;
-import android.view.inputmethod.InputMethodManager;
-import android.widget.Toast;
 
-import com.gun0912.tedpermission.PermissionListener;
-import com.gun0912.tedpermission.TedPermission;
 import com.mikepenz.materialdrawer.AccountHeader;
 import com.mikepenz.materialdrawer.AccountHeaderBuilder;
 import com.mikepenz.materialdrawer.Drawer;
@@ -23,11 +15,6 @@ import com.mikepenz.materialdrawer.model.SecondaryDrawerItem;
 import com.mikepenz.materialdrawer.model.SectionDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IDrawerItem;
 import com.mikepenz.materialdrawer.model.interfaces.IProfile;
-
-import java.util.ArrayList;
-import java.util.jar.Manifest;
-
-import gun0912.tedbottompicker.TedBottomPicker;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -44,7 +31,6 @@ public class MainActivity extends AppCompatActivity {
         mActionToolBar.setTitle("");
         setSupportActionBar(mActionToolBar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
 
 
         mAccountHeader = new AccountHeaderBuilder()
@@ -115,28 +101,23 @@ public class MainActivity extends AppCompatActivity {
                             }
 
 
-
                         }
                         return true;
                     }
                 })
 
 
-
                 .build();
     }
-
 
 
     @Override
     public void onBackPressed() {
 
         // To hide drawer with backpress button
-        if (mResultDrawer.isDrawerOpen())
-        {
+        if (mResultDrawer.isDrawerOpen()) {
             mResultDrawer.closeDrawer();
-        }
-        else super.onBackPressed();
+        } else super.onBackPressed();
     }
 
 }

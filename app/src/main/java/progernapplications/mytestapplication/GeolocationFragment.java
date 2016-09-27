@@ -34,6 +34,7 @@ public class GeolocationFragment extends Fragment {
     private LocationManager mLocationManager;
     private TextView locationText;
     Location currentLocation;
+    private String savedLocation;
 
     String locText = "1234";
 
@@ -50,8 +51,7 @@ public class GeolocationFragment extends Fragment {
         PermissionListener mPermissionListener = new PermissionListener() {
             @Override
             public void onPermissionGranted() {
-                Snackbar positiveSnackBar = Snackbar.make(view, "Permission granted", Snackbar.LENGTH_SHORT);
-                positiveSnackBar.show();
+
             }
 
             @Override
@@ -79,13 +79,16 @@ public class GeolocationFragment extends Fragment {
             Snackbar positiveSnackBar = Snackbar.make(view, "GPS & Network connection established", Snackbar.LENGTH_LONG);
             positiveSnackBar.show();
 
+
             SmartLocation.with(getContext()).location()
                     .oneFix()
                     .start(new OnLocationUpdatedListener() {
                         @Override
+
+
                         public void onLocationUpdated(Location location) {
 
-                            SmartLocation.with(getContext()).geocoding()
+                            SmartLocation.with(view.getContext()).geocoding()
                                     .reverse(location, new OnReverseGeocodingListener() {
                                         @Override
                                         public void onAddressResolved(Location location, List<Address> list) {
@@ -103,8 +106,21 @@ public class GeolocationFragment extends Fragment {
         return view;
     }
 
+    @Override
+    public void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putSerializable("Location", locationText.getText().toString());
+    }
 
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
 
+        if(savedInstanceState != null)
+        {
+            locationText.setText((String)savedInstanceState.getSerializable("Location"));
+        }
+    }
 }
 
 

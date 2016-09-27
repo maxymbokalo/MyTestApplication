@@ -1,7 +1,6 @@
 package progernapplications.mytestapplication;
 
 import android.content.Context;
-import android.media.Image;
 import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -21,8 +20,8 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
     private Context context;
     private ArrayList<Uri> imageURIs;
 
-    public CustomGalleryAdapter(Context context, ArrayList<Uri> imageURIs)
-    {
+
+    public CustomGalleryAdapter(Context context, ArrayList<Uri> imageURIs) {
         this.context = context;
         this.imageURIs = imageURIs;
     }
@@ -40,12 +39,14 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
     }
 
     @Override
-    public void onBindViewHolder(galleryViewHolder holder, int position)
-    {
+    public void onBindViewHolder(galleryViewHolder holder, int position) {
+
+        // Fails to load images larger than 13 mPx ( > 4096x4096)
+        holder.imageFromGallery.setScaleType(ImageView.ScaleType.CENTER_CROP);
+        holder.imageFromGallery.getLayoutParams().height = 1024;
+        holder.imageFromGallery.getLayoutParams().width = 768;
         Picasso.with(context)
                 .load(imageURIs.get(position))
-                .fit()
-                .centerCrop()
                 .placeholder(R.drawable.placeholder)
                 .error(R.drawable.errorplaceholder)
                 .into(holder.imageFromGallery);
@@ -54,16 +55,12 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
 
     @Override
     public int getItemCount() {
-        if( imageURIs != null)
-        {
+        if (imageURIs != null) {
             return imageURIs.size();
-        }
-
-        else return 0;
+        } else return 0;
     }
 
-    public static class galleryViewHolder extends RecyclerView.ViewHolder
-    {
+    public static class galleryViewHolder extends RecyclerView.ViewHolder {
 
         public ImageView imageFromGallery;
 
@@ -73,4 +70,6 @@ public class CustomGalleryAdapter extends RecyclerView.Adapter<CustomGalleryAdap
             imageFromGallery = (ImageView) itemView.findViewById(R.id.galleryImage);
         }
     }
+
+
 }

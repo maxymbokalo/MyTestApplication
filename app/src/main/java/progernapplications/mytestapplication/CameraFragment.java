@@ -61,8 +61,7 @@ public class CameraFragment extends Fragment implements View.OnClickListener{
         PermissionListener mPermissionListener = new PermissionListener() {
             @Override
             public void onPermissionGranted() {
-                Snackbar positiveSnackBar = Snackbar.make(myView, "Permission granted", Snackbar.LENGTH_SHORT);
-                positiveSnackBar.show();
+                //
 
             }
 
