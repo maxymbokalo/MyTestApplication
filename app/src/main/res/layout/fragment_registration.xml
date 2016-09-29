@@ -13,63 +13,65 @@
 
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:id="@+id/loginField"
             android:textSize="15sp"
             android:hint="Login"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/login_icon"
-            android:drawablePadding="5dp"/>
+            android:drawablePadding="5dp"
+            android:layout_alignParentTop="true"
+            android:layout_alignEnd="@+id/sendData"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:id="@+id/passwordField"
             android:textSize="15sp"
             android:hint="Password"
-            android:layout_below="@+id/loginField"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/password_icon"
-            android:drawablePadding="5dp"/>
+            android:drawablePadding="5dp"
+            android:layout_below="@+id/loginField"
+            android:layout_alignEnd="@+id/sendData"
+            android:layout_marginLeft="10dp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:id="@+id/firstNameField"
             android:textSize="15sp"
             android:hint="First name"
-            android:layout_below="@+id/passwordField"
-            android:layout_centerHorizontal="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignStart="@+id/getData"
+            android:layout_marginRight="10dp"
             android:layout_marginTop="10dp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:id="@+id/secondNameField"
             android:textSize="15sp"
             android:hint="Second name"
             android:layout_below="@+id/firstNameField"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp" />
+            android:layout_alignStart="@+id/firstNameField"
+            android:layout_marginRight="10dp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:id="@+id/emailField"
             android:hint="Email"
             android:textSize="15sp"
-            android:layout_below="@+id/secondNameField"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/email_icon"
-            android:drawablePadding="5dp"/>
+            android:drawablePadding="5dp"
+            android:layout_below="@+id/passwordField"
+            android:layout_alignEnd="@+id/sendData"
+            android:layout_marginLeft="10dp" />
 
         <EditText
-            android:layout_width="wrap_content"
+            android:layout_width="125dp"
             android:layout_height="wrap_content"
             android:inputType="date"
             android:ems="10"
@@ -77,11 +79,11 @@
             android:textSize="15sp"
             android:hint="Date of birth"
             android:textAlignment="center"
-            android:layout_below="@+id/emailField"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="10dp"
             android:drawableLeft="@drawable/birthday_icon"
-            android:drawablePadding="5dp"/>
+            android:drawablePadding="5dp"
+            android:layout_marginRight="10dp"
+            android:layout_below="@+id/secondNameField"
+            android:layout_alignStart="@+id/secondNameField" />
 
         <Button
             android:layout_width="wrap_content"
@@ -90,7 +92,9 @@
             android:id="@+id/sendData"
             android:layout_alignParentBottom="true"
             android:layout_alignParentStart="true"
-            android:layout_marginLeft="30dp" />
+            android:layout_marginLeft="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/round_buttons"/>
 
         <Button
             android:layout_width="wrap_content"
@@ -99,7 +103,9 @@
             android:id="@+id/getData"
             android:layout_alignParentBottom="true"
             android:layout_alignParentEnd="true"
-            android:layout_marginRight="30dp" />
+            android:layout_marginRight="30dp"
+            android:layout_marginBottom="20dp"
+            android:background="@drawable/round_buttons"/>
 
     </RelativeLayout>
 </FrameLayout>

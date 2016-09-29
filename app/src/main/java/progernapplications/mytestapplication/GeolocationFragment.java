@@ -93,8 +93,8 @@ public class GeolocationFragment extends Fragment {
                                         @Override
                                         public void onAddressResolved(Location location, List<Address> list) {
                                             Address currentAddress = list.get(0);
-                                            locationText.setText(currentAddress.getCountryName() + " , " + currentAddress.getLocality()
-                                            +" , " + currentAddress.getThoroughfare() + " " + currentAddress.getFeatureName());
+                                            locationText.setText(currentAddress.getCountryName() + ", " + currentAddress.getLocality()
+                                            +", " + currentAddress.getThoroughfare() + " " + currentAddress.getFeatureName());
                                         }
 
                                     });

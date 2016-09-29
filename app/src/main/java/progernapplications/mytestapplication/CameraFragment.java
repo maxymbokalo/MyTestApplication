@@ -17,6 +17,8 @@ import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.Toast;
 
+import com.getkeepsafe.taptargetview.TapTarget;
+import com.getkeepsafe.taptargetview.TapTargetView;
 import com.github.clans.fab.FloatingActionButton;
 import com.gun0912.tedpermission.PermissionListener;
 import com.gun0912.tedpermission.TedPermission;
@@ -78,6 +80,20 @@ public class CameraFragment extends Fragment implements View.OnClickListener{
                 .setDeniedMessage("If you deny this permission, the application won't be able to load photos from gallery and camera")
                 .setPermissions(android.Manifest.permission.READ_EXTERNAL_STORAGE)
                 .check();
+
+        TapTargetView tapTargetView = TapTargetView.showFor(getActivity(),
+                TapTarget.forView(myView.findViewById(R.id.floatActionButton), "Click this button", "To load images from SD-Card")
+        ,new TapTargetView.Listener()
+                {
+                    @Override
+                    public void onTargetClick(TapTargetView view) {
+                        super.onTargetClick(view);
+                        view.dismiss(true);
+                    }
+                }
+        );
+
+
 
         mFloatingActionButton = (FloatingActionButton)view.findViewById(R.id.floatActionButton);
         mFloatingActionButton.setOnClickListener(this);
