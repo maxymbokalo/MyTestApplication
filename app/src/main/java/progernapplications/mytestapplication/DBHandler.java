@@ -27,6 +27,8 @@ public class DBHandler extends SQLiteOpenHelper
         private static final String EMAIL = "email";
         private static final String DATEOFBIRTH = "date";
 
+
+
     public DBHandler(Context context)
     {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -69,9 +71,9 @@ public class DBHandler extends SQLiteOpenHelper
         myDB.close();
     }
 
-    public ArrayList<String> getUsers()
+    public ArrayList<User> getUsers()
     {
-        ArrayList<String> usersList = new ArrayList<>();
+        ArrayList<User> usersList = new ArrayList<>();
 
         String selectQuery = "SELECT * FROM " + TABLE_USERS;
         SQLiteDatabase myDB = this.getWritableDatabase();
@@ -80,16 +82,31 @@ public class DBHandler extends SQLiteOpenHelper
         if(cursor.moveToFirst())
         {
             do {
-                usersList.add("Login :" + cursor.getString(0)
-                        + " \n Password :" + cursor.getString(1)
-                        + "\n Username: " + cursor.getString(2)
-                        + "\n Surname: " + cursor.getString(3)
-                        + "\n Email: " + cursor.getString(4)
-                        + "\n Date of birth: " + cursor.getString(5));
+                usersList.add(new User(cursor.getString(0),cursor.getString(1),cursor.getString(2),
+                        cursor.getString(3),cursor.getString(4), cursor.getString(5)));
             } while (cursor.moveToNext()) ;
 
 
             }
         return usersList;
+    }
+
+    public boolean clearTable()
+    {
+        SQLiteDatabase myDB = this.getWritableDatabase();
+        myDB.execSQL("DROP TABLE IF EXISTS " + TABLE_USERS);
+
+        String createNewTable = "CREATE TABLE if not exists " + TABLE_USERS
+            + "("
+            + LOGIN + " TEXT,"
+            + PASSWORD + " TEXT,"
+            + NAME + " TEXT,"
+            + SURNAME + " TEXT,"
+            + EMAIL + " TEXT,"
+            + DATEOFBIRTH + " TEXT" + ")";
+
+        myDB.execSQL(createNewTable);
+
+        return true;
     }
 }
